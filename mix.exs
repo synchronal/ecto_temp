@@ -9,7 +9,7 @@ defmodule EctoTemp.MixProject do
       elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       package: package(),
-      source_url: "https://github.com/livinginthepast/ecto_temp",
+      source_url: "https://github.com/synchronal/ecto_temp",
       start_permanent: Mix.env() == :prod,
       version: "0.1.0"
     ]
@@ -35,6 +35,6 @@ defmodule EctoTemp.MixProject do
     do: [
       licenses: ["MIT"],
       maintainers: ["Eric Saxby"],
-      links: %{github: "https://github.com/livinginthepast/ecto_temp"}
+      links: %{github: "https://github.com/synchronal/ecto_temp"}
     ]
 end

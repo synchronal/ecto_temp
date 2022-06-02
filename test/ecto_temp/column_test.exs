@@ -22,19 +22,20 @@ defmodule EctoTemp.ColumnTest do
       SELECT column_name, data_type, character_maximum_length, column_default, is_nullable
       FROM information_schema.columns
       WHERE table_name = 'thing_temp'
+      ORDER BY column_name
       """)
       |> Map.get(:rows)
       |> assert_eq([
-        ["id", "bigint", nil, "nextval('thing_temp_id_seq'::regclass)", "NO"],
         ["binary_string", "character varying", 255, nil, "NO"],
         ["binary_text", "text", nil, nil, "YES"],
+        ["id", "bigint", nil, "nextval('thing_temp_id_seq'::regclass)", "NO"],
+        ["inserted_at", "timestamp without time zone", nil, "now()", "YES"],
         ["number_decimal", "numeric", nil, nil, "YES"],
         ["number_float", "double precision", nil, nil, "YES"],
         ["number_integer", "integer", nil, "0", "YES"],
         ["time_naive", "timestamp without time zone", nil, nil, "YES"],
         ["time_utc", "timestamp without time zone", nil, nil, "YES"],
-        ["updated_at", "timestamp without time zone", nil, "now()", "YES"],
-        ["inserted_at", "timestamp without time zone", nil, "now()", "YES"]
+        ["updated_at", "timestamp without time zone", nil, "now()", "YES"]
       ])
     end
   end

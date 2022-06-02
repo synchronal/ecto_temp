@@ -13,4 +13,4 @@ git push origin HEAD
 
 
 
-cecho --bold-bright-green "DONE!" --white "CI is at" --bright-yellow "https://github.com/synchronal/pages/actions"
+cecho --bold-bright-green "DONE!" --white "CI is at" --bright-yellow "https://github.com/synchronal/ecto_temp/actions"

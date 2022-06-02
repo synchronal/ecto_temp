@@ -50,7 +50,7 @@ defmodule EctoTemp.Macros do
 
   This must be called within a `deftemptable` block, or a CompileError will be raised.
   """
-  defmacro deftimestamps() do
+  defmacro deftimestamps do
     quote do
       table = Module.get_attribute(__MODULE__, :__temp_table_definition__)
 
@@ -75,7 +75,7 @@ defmodule EctoTemp.Macros do
   This should be called in a setup block, which needs to be defined **after** all
   `deftemptable` definitions.
   """
-  defmacro create_temp_tables() do
+  defmacro create_temp_tables do
     quote do
       create_ecto_temporary_tables(@repo, @ecto_temporary_tables)
     end

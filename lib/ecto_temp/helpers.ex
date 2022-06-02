@@ -23,9 +23,7 @@ defmodule EctoTemp.Helpers do
               {value_strings ++ ["$#{column_count}"], column_count + 1}
             end)
 
-          "INSERT INTO #{temp_table.schema_name} (#{Enum.join(columns, ", ")}) VALUES (#{
-            Enum.join(value_counters, ", ")
-          }) RETURNING *"
+          "INSERT INTO #{temp_table.schema_name} (#{Enum.join(columns, ", ")}) VALUES (#{Enum.join(value_counters, ", ")}) RETURNING *"
       end
 
     values = columns |> order_values(params)

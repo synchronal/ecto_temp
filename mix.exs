@@ -7,6 +7,7 @@ defmodule EctoTemp.MixProject do
       deps: deps(),
       description: description(),
       dialyzer: dialyzer(),
+      docs: docs(),
       elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       package: package(),
@@ -37,6 +38,13 @@ defmodule EctoTemp.MixProject do
     [
       plt_add_apps: [:ex_unit, :mix],
       plt_add_deps: :app_tree
+    ]
+  end
+
+  defp docs do
+    [
+      main: "EctoTemp",
+      extras: ["README.md", "LICENSE.md"]
     ]
   end
 

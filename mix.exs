@@ -45,7 +45,7 @@ defmodule EctoTemp.MixProject do
 
   defp package(),
     do: [
-      licenses: ["MIT"],
+      licenses: ["Apache 2.0"],
       maintainers: ["Eric Saxby"],
       links: %{github: "https://github.com/synchronal/ecto_temp"}
     ]

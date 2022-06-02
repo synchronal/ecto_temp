@@ -24,8 +24,8 @@ defmodule EctoTemp.MixProject do
     do: [
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
-      {:ecto, ">= 3.0.0", only: :test},
-      {:ecto_sql, "> 3.0.0", only: :test},
+      {:ecto, ">= 3.0.0"},
+      {:ecto_sql, "> 3.0.0"},
       {:ex_doc, "~> 0.19", only: [:docs, :dev]},
       {:mix_audit, "~> 1.0", only: :dev, runtime: false},
       {:postgrex, ">= 0.0.0", only: :test}

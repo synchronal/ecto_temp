@@ -14,7 +14,7 @@ defmodule EctoTemp.MixProject do
       preferred_cli_env: [credo: :test, dialyzer: :test],
       source_url: "https://github.com/synchronal/ecto_temp",
       start_permanent: Mix.env() == :prod,
-      version: "0.1.0"
+      version: version()
     ]
   end
 
@@ -53,8 +53,23 @@ defmodule EctoTemp.MixProject do
 
   defp package(),
     do: [
+      files: ~w[
+        .formatter.exs
+        README.*
+        VERSION
+        lib
+        LICENSE.*
+        mix.exs
+      ],
       licenses: ["Apache 2.0"],
       maintainers: ["Eric Saxby"],
       links: %{github: "https://github.com/synchronal/ecto_temp"}
     ]
+
+  defp version do
+    case Path.expand(Path.join([__ENV__.file, "..", "VERSION"])) |> File.read() do
+      {:error, _} -> "0.0.0"
+      {:ok, version_number} -> version_number |> String.trim()
+    end
+  end
 end

@@ -62,7 +62,7 @@ defmodule EctoTemp.MixProject do
         LICENSE.*
         mix.exs
       ],
-      licenses: ["Apache 2.0"],
+      licenses: ["Apache-2.0"],
       maintainers: ["Eric Saxby"],
       links: %{github: "https://github.com/synchronal/ecto_temp"}
     ]

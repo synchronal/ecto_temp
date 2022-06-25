@@ -27,6 +27,7 @@ defmodule EctoTemp.MixProject do
       {:ecto, ">= 3.0.0"},
       {:ecto_sql, "> 3.0.0"},
       {:ex_doc, "~> 0.28", only: [:docs, :dev]},
+      {:markdown_formatter, "~> 0.4", only: :dev, runtime: false},
       {:mix_audit, "~> 1.0", only: :dev, runtime: false},
       {:postgrex, ">= 0.0.0", only: :test}
     ]
@@ -44,8 +45,12 @@ defmodule EctoTemp.MixProject do
 
   defp docs do
     [
-      main: "EctoTemp",
-      extras: ["README.md", "LICENSE.md"]
+      extras: [
+        "guides/overview.md",
+        "CHANGELOG.md",
+        "LICENSE.md"
+      ],
+      main: "overview"
     ]
   end
 

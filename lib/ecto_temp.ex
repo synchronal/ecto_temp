@@ -1,31 +1,35 @@
 defmodule EctoTemp do
   @moduledoc """
-  Provides `deftemptable/2` and `deftemptable/3` macros, and helper functions, for using Postgres temporary tables.
+  `EctoTemp` is `use`'d to set up a module for managing temp tables. Once set up, macros such as
+  `EctoTemp.Macros.deftemptable/3`, `EctoTemp.Macros.column/3`, and macros in `EctoTemp.Factory`
+  may be used.
 
   ## Examples
 
-      defmodule MyTest do
-        use MyProject.DataCase
-        use EctoTemp, repo: MyProject.Repo
+  ```elixir
+  defmodule MyTest do
+    use MyProject.DataCase
+    use EctoTemp, repo: MyProject.Repo
 
-        require EctoTemp.Factory
-        alias EctoTemp.Factory
+    require EctoTemp.Factory
+    alias EctoTemp.Factory
 
-        deftemptable :things do
-          column :data, :string, null: false
-          column :data_with_default, :string, default: "default value"
-          deftimestamps()
-        end
+    deftemptable :things do
+      column :data, :string, null: false
+      column :data_with_default, :string, default: "default value"
+      deftimestamps()
+    end
 
-        setup do
-          create_temp_tables()
-          :ok
-        end
+    setup do
+      create_temp_tables()
+      :ok
+    end
 
-        test "insert records" do
-          Factory.insert(:things, data: "stuff")
-        end
-      end
+    test "insert records" do
+      Factory.insert(:things, data: "stuff")
+    end
+  end
+  ```
   """
 
   @doc """
@@ -35,6 +39,13 @@ defmodule EctoTemp do
 
     * `:repo` - required - the module defining your Ecto.Repo callbacks.
 
+  ## Example
+
+  ```elixir
+  defmodule MyModule do
+    use EctoTemp, repo: MyProject.Repo
+  end
+  ```
   """
   defmacro __using__(opts) do
     quote bind_quoted: [opts: opts] do

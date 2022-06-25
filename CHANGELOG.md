@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.1.2
+
+- Add overview, data migrations to documentation.
+
 ## 0.1.1
 
 - `:ecto` and `:ecto_sql` are required in any environment that uses `:ecto_temp`.

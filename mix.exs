@@ -47,6 +47,7 @@ defmodule EctoTemp.MixProject do
     [
       extras: [
         "guides/overview.md",
+        "guides/data_migrations.md",
         "CHANGELOG.md",
         "LICENSE.md"
       ],
@@ -61,10 +62,11 @@ defmodule EctoTemp.MixProject do
     do: [
       files: ~w[
         .formatter.exs
+        CHANGELOG.*
+        LICENSE.*
         README.*
         VERSION
         lib
-        LICENSE.*
         mix.exs
       ],
       licenses: ["Apache-2.0"],

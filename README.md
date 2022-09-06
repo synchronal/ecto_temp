@@ -12,7 +12,7 @@ Add `ecto_temp` to `mix.exs`. Consider only adding it to the `:test` environment
 ```elixir
 def deps do
   [
-    {:ecto_temp, "~> 0.1.0", only: :test}
+    {:ecto_temp, "~> 1.0", only: :test}
   ]
 end
 ```

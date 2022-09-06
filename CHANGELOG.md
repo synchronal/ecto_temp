@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.1.3
+
 - Add `:primary_key` info to documentation.
 
 ## 0.1.2

@@ -3,7 +3,7 @@ defmodule EctoTemp.ColumnTest do
 
   use EctoTemp, repo: EctoTemp.Test.Repo
 
-  deftemptable :thing do
+  deftemptable :things_temp do
     column :binary_string, :string, null: false
     column :binary_text, :text
     column :number_decimal, :decimal
@@ -21,14 +21,14 @@ defmodule EctoTemp.ColumnTest do
       query!("""
       SELECT column_name, data_type, character_maximum_length, column_default, is_nullable
       FROM information_schema.columns
-      WHERE table_name = 'thing_temp'
+      WHERE table_name = 'things_temp'
       ORDER BY column_name
       """)
       |> Map.get(:rows)
       |> assert_eq([
         ["binary_string", "character varying", 255, nil, "NO"],
         ["binary_text", "text", nil, nil, "YES"],
-        ["id", "bigint", nil, "nextval('thing_temp_id_seq'::regclass)", "NO"],
+        ["id", "bigint", nil, "nextval('things_temp_id_seq'::regclass)", "NO"],
         ["inserted_at", "timestamp without time zone", nil, "now()", "YES"],
         ["number_decimal", "numeric", nil, nil, "YES"],
         ["number_float", "double precision", nil, nil, "YES"],

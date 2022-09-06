@@ -3,10 +3,10 @@ defmodule EctoTempTest do
 
   use EctoTemp, repo: EctoTemp.Test.Repo
 
-  deftemptable :thing_with_id do
+  deftemptable :thing_with_id_temp do
   end
 
-  deftemptable :thing_without_id, primary_key: false do
+  deftemptable :thing_without_id_temp, primary_key: false do
   end
 
   describe "create_temp_tables" do

@@ -110,7 +110,7 @@ defmodule EctoTemp.Macros do
       table = %EctoTemp.Table{
         name: unquote(table_name),
         primary_key: primary_key,
-        schema_name: "#{unquote(table_name)}_temp",
+        schema_name: "#{unquote(table_name)}",
         columns: columns
       }
 

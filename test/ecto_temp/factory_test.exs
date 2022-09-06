@@ -87,7 +87,7 @@ defmodule EctoTemp.FactoryTest do
              ] =
                query!("""
                SELECT *
-               FROM without_pk_with_columns_temp
+               FROM without_pk_with_columns
                """)
                |> Map.get(:rows)
                |> List.first()
@@ -122,7 +122,7 @@ defmodule EctoTemp.FactoryTest do
              ] =
                query!("""
                SELECT *
-               FROM with_pk_and_columns_temp
+               FROM with_pk_and_columns
                """)
                |> Map.get(:rows)
                |> List.first()

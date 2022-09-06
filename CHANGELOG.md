@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Do not automatically append `_temp` to table names.
+
 ## 0.1.3
 
 - Add `:primary_key` info to documentation.

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add `:primary_key` info to documentation.
+
 ## 0.1.2
 
 - Add overview, data migrations to documentation.

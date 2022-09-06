@@ -15,6 +15,11 @@ defmodule EctoTemp.Macros do
         column :scan_sha, :string, null: false
         column :comment, :string
       end
+
+  ## Opts
+
+  | name | type | default | description |
+  | `primary_key` | boolean | true | When true, adds an `:id` field of type `:bigserial` |
   """
   defmacro deftemptable(table_name, opts \\ [], do: block),
     do: create_temporary_table_definition(table_name, opts, block)

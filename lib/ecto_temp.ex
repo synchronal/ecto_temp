@@ -20,6 +20,13 @@ defmodule EctoTemp do
       deftimestamps()
     end
 
+    deftemptable :other_things, primary_key: false do
+      column :id, :uuid, null: false
+      column :data, :string, null: false
+      column :data_with_default, :string, default: "default value"
+      deftimestamps()
+    end
+
     setup do
       create_temp_tables()
       :ok

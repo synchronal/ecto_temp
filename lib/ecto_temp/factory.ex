@@ -27,9 +27,6 @@ defmodule EctoTemp.Factory do
       %MyDataMigration.Cycle{id: 1} = insert(MyDataMigration.Cycle, :cycles, started_at: ~N[2020-02-03 00:00:00])
 
   """
-  @spec insert(atom()) :: Macro.t()
-  @spec insert(atom(), keyword()) :: Macro.t()
-  @spec insert(struct(), atom(), keyword()) :: Macro.t()
   defmacro insert(struct_or_table, table_or_params \\ nil, params \\ []) do
     quote bind_quoted: [struct_or_table: struct_or_table, table_or_params: table_or_params, params: params] do
       cond do
@@ -61,5 +58,16 @@ defmodule EctoTemp.Factory do
           )
       end
     end
+  end
+
+  @doc """
+  Generates a UUID that may be inserted directly into a `:uuid` field. Use this in preference of
+  `Ecto.UUID.generate/0` or `Ecto.UUID.bingenerate/0`, as those will not dump their string values
+  to the binary format expected by postgres.
+  """
+  @spec uuid() :: binary()
+  def uuid do
+    {:ok, uuid} = Ecto.UUID.dump(Ecto.UUID.generate())
+    uuid
   end
 end

@@ -5,6 +5,8 @@ defmodule EctoTemp.FactoryTest do
   require EctoTemp.Factory
   alias EctoTemp.Factory
 
+  doctest EctoTemp.Factory
+
   deftemptable :with_pk_and_columns do
     column :binary_string, :string
     column :binary_text, :text

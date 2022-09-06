@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add `EctoTemp.Factory.uuid/0`.
 - Do not automatically append `_temp` to table names.
 
 ## 0.1.3

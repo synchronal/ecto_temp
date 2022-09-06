@@ -10,7 +10,7 @@ defmodule EctoTemp.FactoryTest do
     column :binary_text, :text
     column :number_decimal, :decimal
     column :number_float, :float
-    column :number_integer, :integer, default: 0
+    column :number_integer, :integer, default: 6
     column :time_naive, :naive_datetime
     column :time_utc, :utc_datetime
     deftimestamps()
@@ -27,7 +27,7 @@ defmodule EctoTemp.FactoryTest do
   defmodule Thing do
     use Ecto.Schema
 
-    schema "things_temp" do
+    schema "replace-me" do
       field(:binary_string, :string)
       field(:binary_text, :string)
       field(:number_decimal, :decimal)
@@ -68,6 +68,18 @@ defmodule EctoTemp.FactoryTest do
 
       inserted_at |> assert_recent()
       updated_at |> assert_recent()
+    end
+
+    test "returns the given struct, with id and defaults set" do
+      assert %Thing{} = thing = Factory.insert(Thing, :with_pk_and_columns)
+
+      assert is_nil(thing.binary_string)
+      assert is_nil(thing.binary_text)
+      assert is_nil(thing.number_decimal)
+      assert is_nil(thing.number_float)
+      assert thing.number_integer == 6
+      assert is_nil(thing.time_naive)
+      assert is_nil(thing.time_utc)
     end
   end
 

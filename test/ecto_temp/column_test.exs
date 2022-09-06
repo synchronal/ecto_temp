@@ -11,7 +11,12 @@ defmodule EctoTemp.ColumnTest do
     column :number_integer, :integer, default: 0
     column :time_naive, :naive_datetime
     column :time_utc, :utc_datetime
+    column :uuid_id, :uuid
     deftimestamps()
+  end
+
+  deftemptable :things_with_binary_id_temp, primary_key: false do
+    column :id, :uuid, primary_key: true
   end
 
   describe "column" do
@@ -35,7 +40,23 @@ defmodule EctoTemp.ColumnTest do
         ["number_integer", "integer", nil, "0", "YES"],
         ["time_naive", "timestamp without time zone", nil, nil, "YES"],
         ["time_utc", "timestamp without time zone", nil, nil, "YES"],
-        ["updated_at", "timestamp without time zone", nil, "now()", "YES"]
+        ["updated_at", "timestamp without time zone", nil, "now()", "YES"],
+        ["uuid_id", "uuid", nil, nil, "YES"]
+      ])
+    end
+
+    test "allows for uuid primary key" do
+      create_temp_tables()
+
+      query!("""
+      SELECT column_name, data_type, character_maximum_length, column_default, is_nullable
+      FROM information_schema.columns
+      WHERE table_name = 'things_with_binary_id_temp'
+      ORDER BY column_name
+      """)
+      |> Map.get(:rows)
+      |> assert_eq([
+        ["id", "uuid", nil, nil, "YES"]
       ])
     end
   end

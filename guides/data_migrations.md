@@ -77,6 +77,7 @@ defmodule Core.DataMigrations.MyMigration do
       |> Stream.map(&update_thing/1)
       |> Stream.map(&OtherThing.insert_changset(&1, other_things_table))
       |> Stream.map(&insert_other_thing/1)
+      |> Stream.run()
     end, timeout: 60_000)
   end
 

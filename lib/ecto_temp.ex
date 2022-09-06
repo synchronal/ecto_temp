@@ -14,13 +14,13 @@ defmodule EctoTemp do
     require EctoTemp.Factory
     alias EctoTemp.Factory
 
-    deftemptable :things do
+    deftemptable :things_temp do
       column :data, :string, null: false
       column :data_with_default, :string, default: "default value"
       deftimestamps()
     end
 
-    deftemptable :other_things, primary_key: false do
+    deftemptable :other_things_temp, primary_key: false do
       column :id, :uuid, null: false
       column :data, :string, null: false
       column :data_with_default, :string, default: "default value"
@@ -33,7 +33,7 @@ defmodule EctoTemp do
     end
 
     test "insert records" do
-      Factory.insert(:things, data: "stuff")
+      Factory.insert(:things_temp, data: "stuff")
     end
   end
   ```

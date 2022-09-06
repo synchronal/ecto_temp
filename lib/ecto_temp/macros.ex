@@ -1,18 +1,20 @@
 defmodule EctoTemp.Macros do
   @doc """
   Creates a temporary table that will be rolled back at the end of the
-  current test transaction. If the table name is given as `:thing`, then
-  the actual temporary table will be created as `thing_temp`.
+  current test transaction. If the table name is given as `:things`, then
+  the actual temporary table will be created as `things`. As this may
+  overlap with existing tables, it is recommended to use a `temp` prefix
+  of suffix when defining temp tables.
 
   ## Examples
 
-      deftemptable :cycles do
-        column :athlete_plan_id, :integer, null: false
+      deftemptable :person_temp do
+        column :thing_id, :integer, null: false
         deftimestamps()
       end
 
-      deftemptable :scan, primary_key: false do
-        column :scan_sha, :string, null: false
+      deftemptable :thing_temp, primary_key: false do
+        column :description, :string, null: false
         column :comment, :string
       end
 
@@ -21,6 +23,7 @@ defmodule EctoTemp.Macros do
   | name | type | default | description |
   | `primary_key` | boolean | true | When true, adds an `:id` field of type `:bigserial` |
   """
+  @spec deftemptable(table_name :: atom(), opts :: keyword()) :: Macro.t()
   defmacro deftemptable(table_name, opts \\ [], do: block),
     do: create_temporary_table_definition(table_name, opts, block)
 
@@ -28,7 +31,14 @@ defmodule EctoTemp.Macros do
   Add a column to a table definition.
 
   This must be called within a `deftemptable` block, or a CompileError will be raised.
+
+  ## Opts
+
+  | name | type | default | description |
+  | `default` | term()  |      | Provides a default value when none is provided. |
+  | `null`    | boolean | true | Determines whether null values are allowed in a column. |
   """
+  @spec column(name :: atom(), type :: atom(), opts :: keyword()) :: Macro.t()
   defmacro column(name, type, opts \\ []) do
     quote do
       table = Module.get_attribute(__MODULE__, :__temp_table_definition__)
@@ -55,6 +65,7 @@ defmodule EctoTemp.Macros do
 
   This must be called within a `deftemptable` block, or a CompileError will be raised.
   """
+  @spec deftimestamps() :: Macro.t()
   defmacro deftimestamps do
     quote do
       table = Module.get_attribute(__MODULE__, :__temp_table_definition__)
@@ -75,6 +86,7 @@ defmodule EctoTemp.Macros do
     end
   end
 
+  @spec create_temp_tables() :: Macro.t()
   @doc """
   Runs through previously defined `@ecto_temporary_tables` to insert temporary tables.
   This should be called in a setup block, which needs to be defined **after** all

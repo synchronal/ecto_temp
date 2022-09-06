@@ -30,7 +30,7 @@ defmodule MyTest do
   use Test.DataCase, async: true
   use EctoTemp, repo: MyProject.Repo
 
-  deftemptable :things do
+  deftemptable :things_temp do
     column :data, :string, null: false
     column :data_with_default, :string, default: "default value"
     deftimestamps()
@@ -53,7 +53,7 @@ defmodule MyTest do
   require EctoTemp.Factory
 
   test "inserts data into a temp table" do
-    Factory.insert(:things, data: "stuff")
+    Factory.insert(:things_temp, data: "stuff")
   end
 end
 ```

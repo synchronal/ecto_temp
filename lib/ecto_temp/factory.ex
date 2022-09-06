@@ -27,6 +27,9 @@ defmodule EctoTemp.Factory do
       %MyDataMigration.Cycle{id: 1} = insert(MyDataMigration.Cycle, :cycles, started_at: ~N[2020-02-03 00:00:00])
 
   """
+  @spec insert(atom()) :: Macro.t()
+  @spec insert(atom(), keyword()) :: Macro.t()
+  @spec insert(struct(), atom(), keyword()) :: Macro.t()
   defmacro insert(struct_or_table, table_or_params \\ nil, params \\ []) do
     quote bind_quoted: [struct_or_table: struct_or_table, table_or_params: table_or_params, params: params] do
       cond do

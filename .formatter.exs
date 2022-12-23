@@ -1,7 +1,7 @@
 [
   inputs: [
     "{mix,.formatter}.exs",
-    "{config,lib,test}/**/*.{ex,exs}",
+    "{.medic,config,lib,test}/**/*.{ex,exs}",
     "guides/*.md",
     "*.md"
   ],

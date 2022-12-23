@@ -7,5 +7,6 @@
 /deps/
 /doc/
 /priv/plts/
+/priv/postgres/
 ecto_temp-*.tar
 erl_crash.dump

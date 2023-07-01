@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 1.0.1
+
+- Update deps.
+
 ## 1.0.0
 
 - Add `EctoTemp.Factory.uuid/0`.

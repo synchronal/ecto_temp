@@ -9,5 +9,6 @@
 /doc/
 /priv/plts/
 /priv/postgres/
+Brewfile.lock.json
 ecto_temp-*.tar
 erl_crash.dump

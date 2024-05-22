@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.1.0
+
 - Drop support for Elixir 1.13 and older.
 
 ## 1.0.1

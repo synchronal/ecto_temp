@@ -2,9 +2,7 @@
 
 ## Unreleased
 
-## 1.0.2
-
-- Update deps.
+- Drop support for Elixir 1.13 and older.
 
 ## 1.0.1
 

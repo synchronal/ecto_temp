@@ -10,7 +10,7 @@ defmodule EctoTemp.MixProject do
       description: description(),
       dialyzer: dialyzer(),
       docs: docs(),
-      elixir: "~> 1.10",
+      elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       package: package(),
       preferred_cli_env: [credo: :test, dialyzer: :test],

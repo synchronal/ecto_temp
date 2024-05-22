@@ -1,6 +1,8 @@
 defmodule EctoTemp.MixProject do
   use Mix.Project
 
+  def application, do: [extra_applications: [:logger]]
+
   def project do
     [
       app: :ecto_temp,
@@ -18,7 +20,12 @@ defmodule EctoTemp.MixProject do
     ]
   end
 
-  def application, do: [extra_applications: [:logger]]
+  def cli,
+    do: [
+      preferred_envs: [credo: :test, dialyzer: :test]
+    ]
+
+  # # #
 
   defp deps,
     do: [
@@ -39,7 +46,8 @@ defmodule EctoTemp.MixProject do
     [
       plt_add_apps: [:ex_unit, :mix],
       plt_add_deps: :app_tree,
-      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      plt_core_path: "_build/plts/#{Mix.env()}",
+      plt_local_path: "_build/plts/#{Mix.env()}"
     ]
   end
 

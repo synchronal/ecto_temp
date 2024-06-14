@@ -5,6 +5,8 @@ useful in situations where permanent tables may not be viable, such as when test
 (where the schema at the time of test creation will differ over time), or to test modules that
 extend Ecto, but are not concernted with a specific schema.
 
+This library is tested against the most recent 3 versions of Elixir and Erlang.
+
 ## Installation
 
 Add `ecto_temp` to `mix.exs`. Consider only adding it to the `:test` environment.
@@ -12,7 +14,7 @@ Add `ecto_temp` to `mix.exs`. Consider only adding it to the `:test` environment
 ```elixir
 def deps do
   [
-    {:ecto_temp, "~> 1.0", only: :test}
+    {:ecto_temp, "~> 1.2", only: :test}
   ]
 end
 ```

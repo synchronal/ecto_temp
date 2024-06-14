@@ -14,16 +14,13 @@ jobs:
       matrix:
         include:
           - pair:
-              elixir: 1.14.5
-              otp: 25.0
+              elixir: 1.15.8
+              otp: 25.3.2.12
           - pair:
-              elixir: 1.15.7
-              otp: 26.0
-          - pair:
-              elixir: 1.16.3
-              otp: 26.2.5
+              elixir: 1.17.0
+              otp: 27.0
     name: Build Test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       MIX_ENV: test
     steps:
@@ -57,16 +54,13 @@ jobs:
       matrix:
         include:
           - pair:
-              elixir: 1.14.5
-              otp: 25.0
+              elixir: 1.15.8
+              otp: 25.3.2.12
           - pair:
-              elixir: 1.15.7
-              otp: 26.0
-          - pair:
-              elixir: 1.16.3
-              otp: 26.2.5
+              elixir: 1.17.0
+              otp: 27.0
     name: Build Dev
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       MIX_ENV: dev
     steps:
@@ -100,17 +94,14 @@ jobs:
       matrix:
         include:
           - pair:
-              elixir: 1.14.5
-              otp: 25.0
+              elixir: 1.15.8
+              otp: 25.3.2.12
           - pair:
-              elixir: 1.15.7
-              otp: 26.0
-          - pair:
-              elixir: 1.16.3
-              otp: 26.2.5
+              elixir: 1.17.0
+              otp: 27.0
     name: Test
     needs: build_test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       MIX_ENV: test
     services:
@@ -155,17 +146,14 @@ jobs:
       matrix:
         include:
           - pair:
-              elixir: 1.14.5
-              otp: 25.0
+              elixir: 1.15.8
+              otp: 25.3.2.12
           - pair:
-              elixir: 1.15.7
-              otp: 26.0
-          - pair:
-              elixir: 1.16.3
-              otp: 26.2.5
+              elixir: 1.17.0
+              otp: 27.0
     name: Credo + Dialyxir
     needs: build_test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       MIX_ENV: test
     steps:
@@ -204,11 +192,11 @@ jobs:
       matrix:
         include:
           - pair:
-              elixir: 1.16.3
-              otp: 26.2.5
+              elixir: 1.17.0
+              otp: 27.0
     name: Audit
     needs: build_dev
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       MIX_ENV: dev
     steps:
@@ -245,15 +233,15 @@ jobs:
       matrix:
         include:
           - pair:
-              elixir: 1.16.3
-              otp: 26.2.5
+              elixir: 1.17.0
+              otp: 27.0
     name: Publish to Hex
     if: github.ref == 'refs/heads/main'
     needs:
       - test
       - credo_and_dialyxir
       - audit
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Set up Elixir

@@ -27,36 +27,51 @@ defmodule EctoTemp.Factory do
       %MyDataMigration.Cycle{id: 1} = insert(MyDataMigration.Cycle, :cycles, started_at: ~N[2020-02-03 00:00:00])
 
   """
-  defmacro insert(struct_or_table, table_or_params \\ nil, params \\ []) do
-    quote bind_quoted: [struct_or_table: struct_or_table, table_or_params: table_or_params, params: params] do
-      cond do
-        is_atom(struct_or_table) and is_nil(table_or_params) and is_list(params) ->
-          EctoTemp.Helpers.insert_temporary(
-            @repo,
-            @ecto_temporary_tables,
-            nil,
-            struct_or_table,
-            params
-          )
+  defmacro insert(table) do
+    quote bind_quoted: [table: table] do
+      EctoTemp.Helpers.insert_temporary(
+        @repo,
+        @ecto_temporary_tables,
+        nil,
+        table,
+        []
+      )
+    end
+  end
 
-        is_atom(struct_or_table) and is_atom(table_or_params) and is_list(params) ->
-          EctoTemp.Helpers.insert_temporary(
-            @repo,
-            @ecto_temporary_tables,
-            struct_or_table,
-            table_or_params,
-            params
-          )
+  defmacro insert({:__aliases__, _, [_ | _]} = module, table) do
+    quote bind_quoted: [module: module, table: table] do
+      EctoTemp.Helpers.insert_temporary(
+        @repo,
+        @ecto_temporary_tables,
+        module,
+        table,
+        []
+      )
+    end
+  end
 
-        is_atom(struct_or_table) and is_list(table_or_params) ->
-          EctoTemp.Helpers.insert_temporary(
-            @repo,
-            @ecto_temporary_tables,
-            nil,
-            struct_or_table,
-            table_or_params
-          )
-      end
+  defmacro insert(table, params) do
+    quote bind_quoted: [table: table, params: params] do
+      EctoTemp.Helpers.insert_temporary(
+        @repo,
+        @ecto_temporary_tables,
+        nil,
+        table,
+        params
+      )
+    end
+  end
+
+  defmacro insert(module, table, params) do
+    quote bind_quoted: [module: module, table: table, params: params] do
+      EctoTemp.Helpers.insert_temporary(
+        @repo,
+        @ecto_temporary_tables,
+        module,
+        table,
+        params
+      )
     end
   end
 

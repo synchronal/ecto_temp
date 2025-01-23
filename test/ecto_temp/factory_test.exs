@@ -73,6 +73,7 @@ defmodule EctoTemp.FactoryTest do
     end
 
     test "returns the given struct, with id and defaults set" do
+      assert %Thing{} = Factory.insert(EctoTemp.FactoryTest.Thing, :with_pk_and_columns)
       assert %Thing{} = thing = Factory.insert(Thing, :with_pk_and_columns)
 
       assert is_nil(thing.binary_string)

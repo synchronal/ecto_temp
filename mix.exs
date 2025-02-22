@@ -79,7 +79,10 @@ defmodule EctoTemp.MixProject do
       ],
       licenses: ["Apache-2.0"],
       maintainers: ["Eric Saxby"],
-      links: %{github: "https://github.com/synchronal/ecto_temp"}
+      links: %{
+        "GitHub" => "https://github.com/synchronal/ecto_temp",
+        "Sponsor" => "https://github.com/sponsors/reflective-dev"
+      }
     ]
 
   defp version do

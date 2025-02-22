@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add sponsorship link.
+
 ## 2.0.0
 
 - Disambiguate Factory macro variations into separate heads.

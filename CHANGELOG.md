@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 2.0.1
+
 - Add sponsorship link.
 
 ## 2.0.0

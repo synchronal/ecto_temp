@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 2.0.2
+
+- Update deps.
+
 ## 2.0.1
 
 - Add sponsorship link.

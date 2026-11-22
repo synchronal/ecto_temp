@@ -34,7 +34,7 @@ defmodule EctoTemp.MixProject do
       {:ecto, ">= 3.0.0"},
       {:ecto_sql, "> 3.0.0"},
       {:ex_doc, "~> 0.28", only: [:docs, :dev]},
-      {:markdown_formatter, "~> 1.0", only: :dev, runtime: false},
+      {:markdown_formatter, "~> 2.0", only: :dev, runtime: false},
       {:mix_audit, "~> 2.0", only: :dev, runtime: false},
       {:postgrex, ">= 0.0.0", only: :test}
     ]

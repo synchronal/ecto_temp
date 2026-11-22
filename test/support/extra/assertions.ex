@@ -57,7 +57,7 @@ defmodule EctoTemp.Extra.Assertions do
 
   def assert_recent(timestamp) do
     timestamp = timestamp |> NaiveDateTime.truncate(:second)
-    now = NaiveDateTime.local_now()
+    now = NaiveDateTime.utc_now()
 
     cond do
       NaiveDateTime.compare(timestamp, NaiveDateTime.add(now, -30, :second)) == :lt ->
